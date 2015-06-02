@@ -1,4 +1,4 @@
-# CodingPractice
+#CodingPractice
 
 Websites for Practicing Coding:
 
