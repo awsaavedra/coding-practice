@@ -1,0 +1,27 @@
+When you type Python code that reads mystuff.append(’hello’) 
+you are actually setting off a chain of events inside Python to 
+cause something to happen to the mystuff list. Here’s how it works:
+
+  1. Python sees you mentioned mystuff and looks up that variable. 
+  It might have to look backwards to see if you created with =, 
+  look and see if it is a function argument, or maybe it’s a global 
+  variable. Either way it has to find the mystuff first.
+
+  2. Once it finds mystuff it then hits the . (period) operator and 
+  starts to look at variables that are a part of mystuff. Since mystuff is 
+  a list, it knows that mystuff has a bunch of functions.
+
+  3. It then hits append and compares the name “append” to all the 
+  ones that mystuff says it owns. If append is in there (it is) then it 
+  grabs that to use.
+
+  4. Next Python sees the ( (parenthesis) and realizes, 
+  “Oh hey, this should be a function.” At this point it calls (aka runs, executes) 
+  the function just like normally, but instead it calls the function with an 
+  extra argument.
+
+  5. That extra argument is ... mystuff! I know, weird right? But 
+  that’s how Python works so it’s best to just remember it and assume 
+  that’s alright. What happens then, at the end of all this is a
+  function call that looks like: append(mystuff, ’hello’) instead of 
+  what you read which is mystuff.append(’hello’).

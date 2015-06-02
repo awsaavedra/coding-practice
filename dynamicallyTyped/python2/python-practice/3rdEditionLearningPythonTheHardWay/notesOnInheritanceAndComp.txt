@@ -1,0 +1,42 @@
+class SuperFun(Child, BadStuff):
+  #english: make a class super that inherits from child and from BadStuff
+  pass
+
+
+# class thingy(object):
+#   def method1(parameter1):
+#     pass
+#The use of pass under the class Child: is how you tell Python that you want an empty block.
+
+"Method Resolution Order" (MRO): 
+    In dealing with is-many (mult-inheritance)
+    whenever you have implicit actions on any SuperFun instance, Python has to 
+    lookup the possible function in the class hierarchy for both Child and 
+    BadStuff, but it needs to do this in a consistent order Because the MRO is 
+    complex, and a well defined algorithm is used, Python can't leave it to you 
+    to get it right. That'd be annoying wouldn't it? Instead, Python gives you the 
+    super() function which handles all of this for you in the places that
+    you need the altering type of actions as I did in Child.altered above. With 
+    super() you don't have to worry about getting this right, and Python 
+    will find the right function for you.
+
+                        Inheritance vs composition
+Inheritance solves this problem by creating a mechanism for you to have implied 
+features in base classes. Composition solves this by giving you Inheritance Vs. 
+Composition modules and the ability to simply call functions in other classes.
+
+
+If both solutions solve the problem of reuse, then which one is 
+appropriate in which situations? The answer is incredibly subjective, but I'll 
+give you my three guidelines for when to do which:
+
+  1. Avoid multiple inheritance at all costs, as it's too complex to be useful reliably. 
+  If you're stuck with it, then be prepared to know the class hierarchy and 
+  spend time finding where everything is coming from.
+
+  2. Use composition to package up code into modules that is used in many 
+  different unrelated places and situations.
+
+  3. Use inheritance only when there are clearly related reusable pieces of 
+  code that fit under a single common concept, or if you have to because of 
+  something you're using.

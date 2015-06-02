@@ -1,0 +1,29 @@
+exercise 36
+
+Now that you know if-statements, I’m going to give you some rules for for-loops and
+while-loops that will keep you out of trouble. 
+I’m also going to give you some tips on debugging so that you can 
+figure out problems with your program. Finally, you are going to design 
+a similar little game as in the last exercise but with a slight twist.
+Rules For If-Statements
+
+1. Every if-statement must have an else.
+
+2. If this else should never be run because it doesn’t make sense, 
+then you must use a die function in the else that prints out an error 
+message and dies, just like we did in the last exercise. This will
+find many errors.
+
+3. Never nest if-statements more than 2 deep and always try to do them 1 deep. 
+This means if you put an if in an if then you should be looking to move 
+that second if into another function.
+
+4. Treat if-statements like paragraphs, where each if,elif,
+else grouping is like a set of sentences. Put blank lines before and after.
+
+5. Your boolean tests should be simple. If they are complex, 
+move their calculations to variables earlier in your function 
+and use a good name for the variable. If you follow these simple 
+rules, you will start writing better code than most programmers. 
+Go back to the last exercise and see if I followed all of these rules. 
+If not, fix it.
