@@ -1,0 +1,16 @@
+useful bash commands..
+
+touch
+mv  #change file name and extension
+rm #remove specific file
+cd #go in or out of a directory
+mkdir #make directory
+cp #copy file 
+grep #search for string, etc.
+ls #list contents on a directory level
+ls -a #list all hidden files
+sudo #superuser do
+cat #list contents of a specific file
+pwd #path/to/current/working/directory
+vim #basic text editor
+
