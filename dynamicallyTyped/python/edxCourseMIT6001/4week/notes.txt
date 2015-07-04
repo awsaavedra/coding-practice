@@ -1,0 +1,14 @@
+terms to know:
+	path complete (glassbox testing)
+	paths through specifications
+	unit testing
+	integration testing
+	driver- piece of code that does the testing for us
+	stub- "if this code was there, this is what it should do"
+	over vs. covert bug
+	intermittent vs persistant bug	
+
+workflow:
+	unit testing --> integration testing --> regression testing 
+
+
