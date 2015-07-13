@@ -1,7 +1,7 @@
 public class Quiz2
 {
 	 private int a; // Line 3
-			 public void method1( int x ){
+	 public void method1( int x ){
 			 int a; // Line 7
 			 int b = x;
 			 a = b / 5;
@@ -15,8 +15,8 @@ public class Quiz2
 			 System.out.println( "b = " + b );
 			 System.out.println( "this.a = " + this.a );
 			 System.out.println( "x = " + x );
-		 }
-		 public int method2( int x ){
+	}
+	public int method2( int x ){
 			 int a = x;
 			 int b = this.a;
 			 x = 99;
@@ -27,9 +27,9 @@ public class Quiz2
 			 this.a = 37;
 			 b = b * 3;
 			 return a - 3;
-		 }
+	}
 	public static void main(String[] args){
-		Quiz2 q2 = new Quiz2();
-		q2.method1( 13 );
+			Quiz2 q2 = new Quiz2();
+			q2.method1( 13 );
 	}
 } 
