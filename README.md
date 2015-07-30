@@ -9,8 +9,8 @@ Websites for Practicing Coding:
 	-Leetcode
 	
 	-projecteuler
-	
-	-learn to code the hardway
+
+	-hackerrank	
 
 Websites for Studying Code:
 	
@@ -21,6 +21,10 @@ Websites for Studying Code:
 	-https://www.khanacademy.org/computing/computer-programming
 	
 	-http://www.learnjavaonline.org/
+	
+	-Learn to code the hard way
+
+	-freecodingcamp.com
 
 Languages:
 	
@@ -37,3 +41,5 @@ Languages:
 	--*java
 	
 	--*c++
+
+	--*c (maybe some point)
