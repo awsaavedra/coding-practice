@@ -26,6 +26,7 @@ Websites for Studying Code:
 
 	-freecodingcamp.com
 
+
 Languages:
 	
 	1.Dynamically Typed:
