@@ -2,6 +2,7 @@
 	#open vimrc
 
 "Add the following lines
+set smartindent  "sometimes while pasting use :set paste
 set history=1000 
 set number                     " enable line numbers
 set ruler
