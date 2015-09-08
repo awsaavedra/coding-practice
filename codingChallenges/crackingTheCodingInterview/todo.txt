@@ -1,1 +1,15 @@
-1
+
+data structures to know:
+  1. arrays
+  2. pqueue
+  3. hashtables
+  4. heaps (mean and max)
+  5. BST
+  6. linkedList
+
+sorting:
+  1. quicksort
+  2. merge sort
+  3. tim sort
+
+
