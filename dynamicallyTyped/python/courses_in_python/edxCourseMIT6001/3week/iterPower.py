@@ -1,10 +1,15 @@
+'''
+Write an iterative function iterPower(base, exp)
+'''
 
-def iterPower(base, exp):
-	r = 1	
-	while exp > 0:
-		r *= base
-		exp -= 1
-	return r
-print iterPower(2,3)
-print iterPower(2,4)
-
+def iterPower(base,exp):  
+  if exp == 0: 
+    return 1
+  else:
+    temp = 1
+    for x in range(exp):
+      temp *= base
+    return temp
+    
+#print iterPower(2,4)
+print iterPower(-9.06, 7)

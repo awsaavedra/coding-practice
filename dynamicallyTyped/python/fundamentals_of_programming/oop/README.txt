@@ -42,6 +42,9 @@ OOP from A to Z (See subdir for examples)
                       Tom: 
      i                   -instance variable: Tom has 4 legs
                         -method: Tom runs at 20 MPH
+     l. Singleton
+     m. Initalizer
+
   2.Object oriented Design (OOD):
     a.For the OO-design weeder question, have them describe:
       -What classes they would define.
