@@ -5,13 +5,13 @@
     --*Have a definition of the idea/concept w/o examples
     --*Have a couple examples you have rehearsed and can explain and code on the fly 
   
-  ### 1. **The Basic terms:**
+  1. **The Basic terms:**
   
-     a.Class: Base class, Subclass , superclass, abstract
+     a.**Class**: Base class, Subclass , superclass, abstract
      
     - Know thy differences
       
-      b. inheritance
+      b.**inheritance**
       
         i) is a, explain it
         
@@ -19,31 +19,32 @@
           one class from a specific hierarchial level. 
             yes? No? When? Drawbacks? 
       
-      c. class has...
+      c. **class** has...
         i) instance variables (things a class knows about)
         ii) methods (things a class does)
       
-      d.Polymorphism (v. overriding or overloading)
+      d.**Polymorphism** (v. overriding or overloading)
       
-      e.Composition/aggregation
+      e.**Composition/aggregation**
         i) has a, explain it
-        ii)Can an object be composed of multiple things?
+        ii)Can an object be composed of multiple things? 
+        ***What about mult inheritance?
       
-      f.Multiple inheritance
+      f. **Multiple inheritance** and which languages have it
       
-      g.Encapsulation
+      g. **Encapsulation**
         i) Why do you need it?
       
-      h.Interface ( aka  protocol)
+      h. **Interface** ( aka  protocol)
         i) Know the difference between interface and abstract class
       (skipping i due to confusion)
       
       j.Reiterating method stuff (seriously, learn it):
-        i.METHOD...
-           a.overriding
-           b.overloading (vs. overriding)
+        i.**METHOD**...
+           a.**overriding**
+           b.**overloading**(vs. overriding)
           
-           c.signatures (What is included in one)
+           c.**signatures (What is included in one)
            d.visibility (e.g. public, private, protected, etc.)
       
       k.Objects briefly explained
@@ -63,7 +64,7 @@
      l. Singleton
      m. Initalizer
 
-  ### 2.Object oriented Design (OOD):
+  2. **Object oriented Design (OOD)**:
     
     a.For the OO design weeder question, have them describe:
        -What classes they would define.
