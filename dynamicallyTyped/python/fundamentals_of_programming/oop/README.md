@@ -7,40 +7,31 @@
   
   1. **The Basic terms:**
   
-     a.**Class**: Base class, Subclass , superclass, abstract
-     
-    - Know thy differences
+    a.**Class**: Base class, Subclass , superclass, abstract.
       
-      b.**inheritance**
+    b.**inheritance**
+      -is a, explain it
       
-        i) is a, explain it
-        
-        ii) Can an object inherit only from 
-          one class from a specific hierarchial level. 
-            yes? No? When? Drawbacks? 
+    c. **class** has...
+      -instance variables (things a class knows about)
+      -methods (things a class does)
       
-      c. **class** has...
-        i) instance variables (things a class knows about)
-        ii) methods (things a class does)
+    d.**Polymorphism** (v. overriding or overloading)
       
-      d.**Polymorphism** (v. overriding or overloading)
+    e.**Composition/aggregation**
+      -has a, explain it
+      -Can an object be composed of multiple things? What about mult inheritance?
       
-      e.**Composition/aggregation**
-        i) has a, explain it
-        ii)Can an object be composed of multiple things? 
-        ***What about mult inheritance?
+    f. **Multiple inheritance** and which languages have it
       
-      f. **Multiple inheritance** and which languages have it
+    g. **Encapsulation**
+      i) Why do you need it?
       
-      g. **Encapsulation**
-        i) Why do you need it?
+    h. **Interface** ( aka  protocol)
+      i) Know the difference between interface and abstract class
       
-      h. **Interface** ( aka  protocol)
-        i) Know the difference between interface and abstract class
-      (skipping i due to confusion)
-      
-      j.Reiterating method stuff (seriously, learn it):
-        i.**METHOD**...
+    j.Reiterating method stuff (seriously, learn it):
+      i.**METHOD**...
            a.**overriding**
            b.**overloading**(vs. overriding)
           
