@@ -11,31 +11,31 @@
       
     b.**inheritance**
       
-      --*is a, explain it
+      a.is a, explain it
       
     c. **class** has...
       
-      --*instance variables (things a class knows about)
+      a.instance variables (things a class knows about)
       
-      --*methods (things a class does)
+      b. methods (things a class does)
       
     d.**Polymorphism** (v. overriding or overloading)
       
     e.**Composition/aggregation**
       
-      --*has a, explain it
+      a.has a, explain it
       
-      --*Can an object be composed of multiple things? What about mult inheritance?
+      b. Can an object be composed of multiple things? What about mult inheritance?
       
     f. **Multiple inheritance** and which languages have it
       
     g. **Encapsulation**
       
-      --*Why do you need it?
+      a. Why do you need it?
       
     h. **Interface** ( aka  protocol)
       
-      --*Know the difference between interface and abstract class
+      a. Know the difference between interface and abstract class
       
     j.**METHOD**...
            
@@ -61,55 +61,55 @@
                     *****instance variable: Tom has 4 legs
                     *****method: Tom runs at 20 MPH
      
-    l.**Objects**:
+    l.**Objects**
       
-      a.Singleton
+        a.Singleton
       
-      b.Initalizer
+        b.Initalizer
       
-      c.constructor
+        c.constructor
       
-      d.instantiation
+        d.instantiation
 
-      e. adding more later...
+        e. adding more later...
 
   2. **Object oriented Design (OOD)**:
     
     a.For the OO design weeder question, have them describe:
        
-       a.What classes they would define.
+        a.What classes they would define.
        
-       b.What methods go in each class (including signatures).
+        b.What methods go in each class (including signatures).
        
-       c.What the class constructors are responsible for.
+        c.What the class constructors are responsible for.
        
-       d.What data structures the class will have to maintain.
+        d.What data structures the class will have to maintain.
        
        e.Whether any Design Patterns are applicable to this problem
     
     b. Some examples (thanks Steve Yegge):
     
-      a. Model the Animal kingdom as a class system
+        a. Model the Animal kingdom as a class system
       
-      b. Find some online and try to build the design from scratch
+        b. Find some online and try to build the design from scratch
     
     c.**OOD Concepts**:
     
-      a. KNOW EACH ONE DOWN COLD: Define it, have examples, and why/when to use OOD vs. other 
+        a. KNOW EACH ONE DOWN COLD: Define it, have examples, and why/when to use OOD vs. other 
       
-      b. paradigms (the last goal is a rather advanced thing, don't worry too much)
+        b. paradigms (the last goal is a rather advanced thing, don't worry too much)
       
-      c.**Robustness**
+        c.**Robustness**
       
-      d.**Adaptability**
+        d.**Adaptability**
       
       e.**Reusability**
     
     d. Object oriented design principles (OODP):
     
-      i)Modularity
+        i)Modularity
+        
+        ii)Abstraction
       
-      ii)Abstraction
-      
-      iii)Encapsulation 
+        iii)Encapsulation 
 
