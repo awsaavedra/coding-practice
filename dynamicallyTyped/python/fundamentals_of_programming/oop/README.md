@@ -31,14 +31,14 @@
       i) Know the difference between interface and abstract class
       
     j.Reiterating method stuff (seriously, learn it):
-      i.**METHOD**...
+      a.**METHOD**...
            a.**overriding**
            b.**overloading**(vs. overriding)
           
            c.**signatures (What is included in one)
            d.visibility (e.g. public, private, protected, etc.)
       
-      k.Objects briefly explained
+    k.Objects briefly explained
       
         i) An object is a specific instance of a class
           ex) 
@@ -52,35 +52,38 @@
                     *****instance variable: Tom has 4 legs
                     *****method: Tom runs at 20 MPH
      
-     l. Singleton
-     m. Initalizer
+    l.**Objects**:
+      a.Singleton
+      b.Initalizer
+      c.constructor
+      d.instantiation
 
   2. **Object oriented Design (OOD)**:
     
     a.For the OO design weeder question, have them describe:
-       -What classes they would define.
-       -What methods go in each class (including signatures).
-       -What the class constructors are responsible for.
-       -What data structures the class will have to maintain.
-       -Whether any Design Patterns are applicable to this problem
+       a.What classes they would define.
+       b.What methods go in each class (including signatures).
+       c.What the class constructors are responsible for.
+       d.What data structures the class will have to maintain.
+       e.Whether any Design Patterns are applicable to this problem
     
     b. Some examples (thanks Steve Yegge):
     
-      i)Model the Animal kingdom as a class system
+      a. Model the Animal kingdom as a class system
       
-      ii)Find some online and try to build the design from scratch
+      b. Find some online and try to build the design from scratch
     
-    c.OOD Concepts:
+    c.**OOD Concepts**:
     
-      -KNOW EACH ONE DOWN COLD: Define it, have examples, and why/when to use OOD vs. other 
+      a.KNOW EACH ONE DOWN COLD: Define it, have examples, and why/when to use OOD vs. other 
       
-      -paradigms (the last goal is a rather advanced thing, don't worry too much)
+      b.paradigms (the last goal is a rather advanced thing, don't worry too much)
       
-      i)Robustness
+        a. **Robustness**
       
-      ii)Adaptability
+        b. **Adaptability**
       
-      iii)Reusability
+        c. **Reusability**
     
     d. Object oriented design principles (OODP):
     
