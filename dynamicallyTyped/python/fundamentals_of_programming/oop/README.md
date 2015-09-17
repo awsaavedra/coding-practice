@@ -37,9 +37,7 @@
       
       --*Know the difference between interface and abstract class
       
-    j.Reiterating method stuff (seriously, learn it):
-      
-      a.**METHOD**...
+    j.**METHOD**...
            
            a.**overriding**
            
