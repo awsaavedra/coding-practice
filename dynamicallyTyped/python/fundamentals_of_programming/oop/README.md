@@ -11,31 +11,31 @@
       
     b.**inheritance**
       
-      a.is a, explain it
+        a.is a, explain it
       
     c. **class** has...
       
-      a.instance variables (things a class knows about)
+        a.instance variables (things a class knows about)
       
-      b. methods (things a class does)
+        b. methods (things a class does)
       
     d.**Polymorphism** (v. overriding or overloading)
       
     e.**Composition/aggregation**
       
-      a.has a, explain it
+        a.has a, explain it
       
-      b. Can an object be composed of multiple things? What about mult inheritance?
+        b. Can an object be composed of multiple things? What about mult inheritance?
       
     f. **Multiple inheritance** and which languages have it
       
     g. **Encapsulation**
       
-      a. Why do you need it?
+        a. Why do you need it?
       
     h. **Interface** ( aka  protocol)
       
-      a. Know the difference between interface and abstract class
+        a. Know the difference between interface and abstract class
       
     j.**METHOD**...
            
@@ -99,11 +99,11 @@
       
         b. paradigms (the last goal is a rather advanced thing, don't worry too much)
       
-        c.**Robustness**
+        c.Robustness
       
-        d.**Adaptability**
+        d.Adaptability
       
-      e.**Reusability**
+        e.Reusability
     
     d. Object oriented design principles (OODP):
     
