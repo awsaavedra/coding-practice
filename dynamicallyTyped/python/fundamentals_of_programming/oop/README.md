@@ -10,11 +10,13 @@
     a.**Class**: Base class, Subclass , superclass, abstract.
       
     b.**inheritance**
-      ⋅⋅*is a, explain it
+      
+      --*is a, explain it
       
     c. **class** has...
-      ⋅⋅*instance variables (things a class knows about)
-      ⋅⋅*methods (things a class does)
+      
+      --*instance variables (things a class knows about)
+      --*methods (things a class does)
       
     d.**Polymorphism** (v. overriding or overloading)
       
