@@ -12,7 +12,9 @@
 
   5. **Scope**
   
-      -local, class wide, global
+      -local, class wide, global, etc.
+
+      -What creates scope? Differences in languages, contexts, etc.
 
   6. **Variables**
   
