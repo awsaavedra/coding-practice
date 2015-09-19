@@ -14,6 +14,12 @@
   
       -local, class wide, global, etc.
 
+      -namespace
+
+        a. instance namespace
+
+        b. class namespace
+
       -What creates scope? Differences in languages, contexts, etc.
 
   6. **Variables**

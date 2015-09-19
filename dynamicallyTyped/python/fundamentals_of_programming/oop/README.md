@@ -7,11 +7,18 @@
   
   1. **The Basic terms:**
   
-    a.**Class**: Base class, Subclass , superclass, abstract.
+    a.**Class**: 
+    
+      a. Base class, Subclass , superclass, 
+      
+      b. abstract base class (and difference from concrete class)
+        
+        -abstract method
       
     b.**inheritance**
       
         a.is a, explain it
+
       
     c. **class** has...
       
