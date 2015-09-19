@@ -56,7 +56,12 @@
 
   14. **Understanding memory**
       
-      a. Contiguous in Memory vs. non-contiguous in memory (and which Data structures are what)
+      a. Contiguous in Memory vs. non-contiguous in memory 
+          
+          -and which Data structures are what
+
+          -random access memory (RAM)
+
 
   15. **pointers and references**
 
