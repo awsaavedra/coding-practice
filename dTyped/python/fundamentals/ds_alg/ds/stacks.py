@@ -18,6 +18,7 @@
       -is_empty(): returns a boolean whether the stack is empty or not
 
       -len(stackName): returns the number of elements in a stack
+Some uses of a stack: reversing inputted data
 """
 
 class ArrayStack:

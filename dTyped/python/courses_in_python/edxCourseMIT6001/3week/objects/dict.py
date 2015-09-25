@@ -1,45 +1,42 @@
-#dictionary is a collection of key value pairs
-#unordered collections
+#dictionary problems 
 
-months = { 'Jan': 1, 'Feb' : 2} #key: val
-  #REMEMBER: keys are IMMUTABLE, so you can use tuples, etc. but NOT lists
+animals = { 'a': ['aardvark'], 'b': ['baboon'], 'c': ['coati']}
 
-for e in months:
-  print months[e]
+animals['d'] = ['donkey']
+animals['d'].append('dog')
+animals['d'].append('dingo')
 
-print "can do months.keys(): %s" % months.keys()
+"""
+First, write a procedure, called howMany, 
+which returns the sum of the number of values associated with a dictionary."""
 
+def howMany(aDict):
+  count = 0
+  for key in aDict:
+    if len(aDict[key]) > 1:
+      count += len(aDict[key])
+    elif len(aDict[key]) == 1:
+      count += 1
+  return count
+#print howMany(animals)
 
-print "\n------------------------------- dictionary problem 1-------------\n"
+"""
+This time, write a procedure, called biggest, which returns the key 
+corresponding to the entry with the largest number of values associated 
+with it. If there is more than one such entry, return 
+any one of the matching keys."""
 
-animals = {'a': 'aardvark', 'b': 'baboon', 'c': 'coati'}
+def biggest(aDict):
 
-animals['d'] = 'donkey' 
+  biggest = 0
+  biggestKey = []
+  
+  if len(aDict) == 0:
+    return None
+  for key in aDict:
+    if len(aDict[key]) >= biggest:
+      biggest = len(aDict[key])
+      biggestKey = key
+  print biggestKey
 
-print animals
-
-print animals['c']
-
-#print animals['donkey'] #produces error, explain why.
-
-print len(animals)
-
-animals['a'] = 'anteater'
-
-print animals['a']
-
-print len(animals['a'])
-
-print animals.has_key('baboon')
-
-print 'donkey' in animals.values()
-
-print animals.has_key('b')
-
-print animals.keys()
-
-del animals['b']
-
-print len(animals)
-
-print animals.values()
+biggest(animals)

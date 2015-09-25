@@ -15,6 +15,8 @@
     
   2. Data Structures and Algorithms in Python by Michael H. Goldwasser
 
-  3. Lots of general material: http://teamtreehouse.com/kennethlove
+  3. ONLINE MATERIAL
+  
+      a. Lots of general material: http://teamtreehouse.com/kennethlove
 
-  4. edx course: https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-5 
+      b. edx course: https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-5 
