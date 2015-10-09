@@ -56,4 +56,13 @@ class ArrayQueue:
     self._data[avail] = e
     self._size += 1
 
-  #need to implement resize method
+  def _resize(self, cap):
+    old = self._data #tracking existing list
+    self._data = [None]*cap #allocate list w/ new capacity
+    walk = self._front
+    for k in range(self._size): #only consider existing elements
+      self._data[k] = old[walk] #shift indices
+      walk = (1 + walk)% len(old) #use old size as modulus
+    self._front = 0 #front has been realigned
+
+
