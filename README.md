@@ -29,15 +29,11 @@ Websites for Studying Code:
 
 Languages:
 	
-	1.Dynamically Typed:
-	
 	--*javascript
 	
 	--*python
 	
 	--*ruby
-	
-	2.Statically Typed:
 	
 	--*java
 	
