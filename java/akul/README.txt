@@ -1,1 +1,0 @@
-This folder is for akul's Java practice.

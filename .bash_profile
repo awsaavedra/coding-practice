@@ -1,3 +1,4 @@
+# ~/.bash_profile
 [[ -s ~/.bashrc ]] && source ~/.bashrc
 
 export CLICOLOR=1
