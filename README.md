@@ -18,3 +18,4 @@ Languages:
 	java
 	haskell
 	c++
+  kotlin
