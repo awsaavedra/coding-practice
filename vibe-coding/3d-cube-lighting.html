@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cube with Lighting</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+        canvas {
+            border: 2px solid #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            background: #1a1a2e;
+        }
+        .controls {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 40px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            min-width: 400px;
+        }
+        .control-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.5);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.5);
+        }
+        .value-display {
+            display: inline-block;
+            float: right;
+            background: rgba(76, 175, 80, 0.3);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>3D Cube with Dynamic Lighting</h1>
+    <canvas id="canvas" width="700" height="700"></canvas>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label>
+                Rotation X: <span class="value-display" id="rotX-value">0°</span>
+            </label>
+            <input type="range" id="rotX" min="0" max="360" value="30">
+        </div>
+        <div class="control-group">
+            <label>
+                Rotation Y: <span class="value-display" id="rotY-value">0°</span>
+            </label>
+            <input type="range" id="rotY" min="0" max="360" value="45">
+        </div>
+        <div class="control-group">
+            <label>
+                Rotation Z: <span class="value-display" id="rotZ-value">0°</span>
+            </label>
+            <input type="range" id="rotZ" min="0" max="360" value="0">
+        </div>
+        <div class="control-group">
+            <label>
+                Light Position X: <span class="value-display" id="lightX-value">0</span>
+            </label>
+            <input type="range" id="lightX" min="-500" max="500" value="200">
+        </div>
+        <div class="control-group">
+            <label>
+                Light Position Y: <span class="value-display" id="lightY-value">0</span>
+            </label>
+            <input type="range" id="lightY" min="-500" max="500" value="-200">
+        </div>
+        <div class="control-group">
+            <label>
+                Light Position Z: <span class="value-display" id="lightZ-value">0</span>
+            </label>
+            <input type="range" id="lightZ" min="-500" max="500" value="300">
+        </div>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Rotation angles
+        let rotX = 30;
+        let rotY = 45;
+        let rotZ = 0;
+        
+        // Light source position
+        let lightPos = {x: 200, y: -200, z: 300};
+        
+        // Cube vertices (centered at origin)
+        const cubeSize = 150;
+        const vertices = [
+            [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1], // Back face
+            [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]      // Front face
+        ].map(v => v.map(c => c * cubeSize));
+        
+        // Cube faces (indices into vertices array)
+        const faces = [
+            [0, 1, 2, 3], // Back
+            [4, 5, 6, 7], // Front
+            [0, 1, 5, 4], // Bottom
+            [2, 3, 7, 6], // Top
+            [0, 3, 7, 4], // Left
+            [1, 2, 6, 5]  // Right
+        ];
+        
+        // Face colors
+        const faceColors = [
+            [255, 100, 100], // Back - Red
+            [100, 255, 100], // Front - Green
+            [100, 100, 255], // Bottom - Blue
+            [255, 255, 100], // Top - Yellow
+            [255, 100, 255], // Left - Magenta
+            [100, 255, 255]  // Right - Cyan
+        ];
+        
+        // Matrix multiplication
+        function multiplyMatrix(a, b) {
+            const result = [];
+            for (let i = 0; i < 3; i++) {
+                result[i] = 
+                    a[i][0] * b[0] +
+                    a[i][1] * b[1] +
+                    a[i][2] * b[2];
+            }
+            return result;
+        }
+        
+        // Rotation matrices
+        function rotationX(angle) {
+            const rad = angle * Math.PI / 180;
+            const c = Math.cos(rad);
+            const s = Math.sin(rad);
+            return [
+                [1, 0, 0],
+                [0, c, -s],
+                [0, s, c]
+            ];
+        }
+        
+        function rotationY(angle) {
+            const rad = angle * Math.PI / 180;
+            const c = Math.cos(rad);
+            const s = Math.sin(rad);
+            return [
+                [c, 0, s],
+                [0, 1, 0],
+                [-s, 0, c]
+            ];
+        }
+        
+        function rotationZ(angle) {
+            const rad = angle * Math.PI / 180;
+            const c = Math.cos(rad);
+            const s = Math.sin(rad);
+            return [
+                [c, -s, 0],
+                [s, c, 0],
+                [0, 0, 1]
+            ];
+        }
+        
+        // Project 3D to 2D
+        function project(point) {
+            const scale = 400 / (400 + point[2]);
+            return [
+                canvas.width / 2 + point[0] * scale,
+                canvas.height / 2 - point[1] * scale
+            ];
+        }
+        
+        // Calculate face normal
+        function getFaceNormal(face, transformedVertices) {
+            const v1 = transformedVertices[face[0]];
+            const v2 = transformedVertices[face[1]];
+            const v3 = transformedVertices[face[2]];
+            
+            const u = [v2[0] - v1[0], v2[1] - v1[1], v2[2] - v1[2]];
+            const v = [v3[0] - v1[0], v3[1] - v1[1], v3[2] - v1[2]];
+            
+            return [
+                u[1] * v[2] - u[2] * v[1],
+                u[2] * v[0] - u[0] * v[2],
+                u[0] * v[1] - u[1] * v[0]
+            ];
+        }
+        
+        // Calculate lighting intensity
+        function calculateLighting(faceCenter, normal) {
+            // Vector from face to light
+            const lightDir = [
+                lightPos.x - faceCenter[0],
+                lightPos.y - faceCenter[1],
+                lightPos.z - faceCenter[2]
+            ];
+            
+            // Normalize vectors
+            const lightMag = Math.sqrt(lightDir[0]**2 + lightDir[1]**2 + lightDir[2]**2);
+            const normalMag = Math.sqrt(normal[0]**2 + normal[1]**2 + normal[2]**2);
+            
+            const lightDirNorm = lightDir.map(c => c / lightMag);
+            const normalNorm = normal.map(c => c / normalMag);
+            
+            // Dot product for diffuse lighting
+            const dotProduct = 
+                lightDirNorm[0] * normalNorm[0] +
+                lightDirNorm[1] * normalNorm[1] +
+                lightDirNorm[2] * normalNorm[2];
+            
+            // Clamp between 0 and 1, add ambient light
+            const ambient = 0.3;
+            const diffuse = Math.max(0, dotProduct) * 0.7;
+            
+            return Math.min(1, ambient + diffuse);
+        }
+        
+        // Apply color with lighting
+        function applyLighting(color, intensity) {
+            return `rgb(${Math.floor(color[0] * intensity)}, ${Math.floor(color[1] * intensity)}, ${Math.floor(color[2] * intensity)})`;
+        }
+        
+        function draw() {
+            ctx.fillStyle = '#1a1a2e';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Transform vertices
+            const rotXMatrix = rotationX(rotX);
+            const rotYMatrix = rotationY(rotY);
+            const rotZMatrix = rotationZ(rotZ);
+            
+            const transformedVertices = vertices.map(v => {
+                let point = multiplyMatrix(rotXMatrix, v);
+                point = multiplyMatrix(rotYMatrix, point);
+                point = multiplyMatrix(rotZMatrix, point);
+                return point;
+            });
+            
+            // Calculate face data for sorting
+            const faceData = faces.map((face, index) => {
+                const faceVerts = face.map(i => transformedVertices[i]);
+                const faceCenter = [
+                    faceVerts.reduce((sum, v) => sum + v[0], 0) / 4,
+                    faceVerts.reduce((sum, v) => sum + v[1], 0) / 4,
+                    faceVerts.reduce((sum, v) => sum + v[2], 0) / 4
+                ];
+                
+                const normal = getFaceNormal(face, transformedVertices);
+                const intensity = calculateLighting(faceCenter, normal);
+                
+                // Check if face is visible (backface culling)
+                const viewVector = [0, 0, 1];
+                const dotProduct = normal[0] * viewVector[0] + 
+                                 normal[1] * viewVector[1] + 
+                                 normal[2] * viewVector[2];
+                
+                return {
+                    face,
+                    faceCenter,
+                    intensity,
+                    visible: dotProduct < 0,
+                    z: faceCenter[2],
+                    color: faceColors[index]
+                };
+            });
+            
+            // Sort faces by z-depth (painter's algorithm)
+            faceData.sort((a, b) => a.z - b.z);
+            
+            // Draw faces
+            faceData.forEach(data => {
+                if (!data.visible) return;
+                
+                ctx.beginPath();
+                const projected = data.face.map(i => project(transformedVertices[i]));
+                ctx.moveTo(projected[0][0], projected[0][1]);
+                for (let i = 1; i < projected.length; i++) {
+                    ctx.lineTo(projected[i][0], projected[i][1]);
+                }
+                ctx.closePath();
+                
+                ctx.fillStyle = applyLighting(data.color, data.intensity);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            });
+            
+            // Draw light source indicator
+            const lightProjected = project([lightPos.x, lightPos.y, lightPos.z]);
+            ctx.beginPath();
+            ctx.arc(lightProjected[0], lightProjected[1], 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffeb3b';
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Add glow effect
+            ctx.beginPath();
+            ctx.arc(lightProjected[0], lightProjected[1], 20, 0, Math.PI * 2);
+            const gradient = ctx.createRadialGradient(
+                lightProjected[0], lightProjected[1], 0,
+                lightProjected[0], lightProjected[1], 20
+            );
+            gradient.addColorStop(0, 'rgba(255, 235, 59, 0.4)');
+            gradient.addColorStop(1, 'rgba(255, 235, 59, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+        }
+        
+        // Setup controls
+        const controls = {
+            rotX: document.getElementById('rotX'),
+            rotY: document.getElementById('rotY'),
+            rotZ: document.getElementById('rotZ'),
+            lightX: document.getElementById('lightX'),
+            lightY: document.getElementById('lightY'),
+            lightZ: document.getElementById('lightZ')
+        };
+        
+        controls.rotX.addEventListener('input', (e) => {
+            rotX = parseInt(e.target.value);
+            document.getElementById('rotX-value').textContent = rotX + '°';
+            draw();
+        });
+        
+        controls.rotY.addEventListener('input', (e) => {
+            rotY = parseInt(e.target.value);
+            document.getElementById('rotY-value').textContent = rotY + '°';
+            draw();
+        });
+        
+        controls.rotZ.addEventListener('input', (e) => {
+            rotZ = parseInt(e.target.value);
+            document.getElementById('rotZ-value').textContent = rotZ + '°';
+            draw();
+        });
+        
+        controls.lightX.addEventListener('input', (e) => {
+            lightPos.x = parseInt(e.target.value);
+            document.getElementById('lightX-value').textContent = lightPos.x;
+            draw();
+        });
+        
+        controls.lightY.addEventListener('input', (e) => {
+            lightPos.y = parseInt(e.target.value);
+            document.getElementById('lightY-value').textContent = lightPos.y;
+            draw();
+        });
+        
+        controls.lightZ.addEventListener('input', (e) => {
+            lightPos.z = parseInt(e.target.value);
+            document.getElementById('lightZ-value').textContent = lightPos.z;
+            draw();
+        });
+        
+        // Initialize display values
+        document.getElementById('rotX-value').textContent = rotX + '°';
+        document.getElementById('rotY-value').textContent = rotY + '°';
+        document.getElementById('rotZ-value').textContent = rotZ + '°';
+        document.getElementById('lightX-value').textContent = lightPos.x;
+        document.getElementById('lightY-value').textContent = lightPos.y;
+        document.getElementById('lightZ-value').textContent = lightPos.z;
+        
+        // Initial draw
+        draw();
+    </script>
+</body>
+</html>
