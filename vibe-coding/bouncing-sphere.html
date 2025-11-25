@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Sphere</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 2px solid #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        canvas.width = 800;
+        canvas.height = 600;
+        
+        // Sphere properties
+        const sphere = {
+            x: canvas.width / 2,
+            y: 50,
+            radius: 20,
+            vx: 3,
+            vy: 0,
+            gravity: 0.5,
+            bounce: 0.85,
+            color: '#e74c3c'
+        };
+        
+        // Trail array to store previous positions
+        const trail = [];
+        const maxTrailLength = 50;
+        
+        function drawSphere() {
+            // Create gradient for 3D effect
+            const gradient = ctx.createRadialGradient(
+                sphere.x - sphere.radius/3,
+                sphere.y - sphere.radius/3,
+                sphere.radius/10,
+                sphere.x,
+                sphere.y,
+                sphere.radius
+            );
+            gradient.addColorStop(0, '#ff6b6b');
+            gradient.addColorStop(0.7, sphere.color);
+            gradient.addColorStop(1, '#c0392b');
+            
+            ctx.beginPath();
+            ctx.arc(sphere.x, sphere.y, sphere.radius, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Add shine
+            ctx.beginPath();
+            ctx.arc(sphere.x - sphere.radius/3, sphere.y - sphere.radius/3, sphere.radius/4, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            ctx.fill();
+        }
+        
+        function drawTrail() {
+            trail.forEach((point, index) => {
+                const opacity = (index / trail.length) * 0.5;
+                const radius = sphere.radius * (index / trail.length);
+                
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(231, 76, 60, ${opacity})`;
+                ctx.fill();
+            });
+        }
+        
+        function update() {
+            // Apply gravity
+            sphere.vy += sphere.gravity;
+            
+            // Update position
+            sphere.x += sphere.vx;
+            sphere.y += sphere.vy;
+            
+            // Add current position to trail
+            trail.push({x: sphere.x, y: sphere.y});
+            if (trail.length > maxTrailLength) {
+                trail.shift();
+            }
+            
+            // Bounce off floor
+            if (sphere.y + sphere.radius > canvas.height) {
+                sphere.y = canvas.height - sphere.radius;
+                sphere.vy *= -sphere.bounce;
+                
+                // Add small horizontal variation on bounce
+                sphere.vx += (Math.random() - 0.5) * 0.5;
+            }
+            
+            // Bounce off ceiling
+            if (sphere.y - sphere.radius < 0) {
+                sphere.y = sphere.radius;
+                sphere.vy *= -sphere.bounce;
+            }
+            
+            // Bounce off walls
+            if (sphere.x + sphere.radius > canvas.width || sphere.x - sphere.radius < 0) {
+                sphere.vx *= -1;
+                sphere.x = sphere.x + sphere.radius > canvas.width 
+                    ? canvas.width - sphere.radius 
+                    : sphere.radius;
+            }
+            
+            // Apply air resistance
+            sphere.vx *= 0.999;
+            
+            // Prevent sphere from getting stuck at bottom
+            if (Math.abs(sphere.vy) < 0.5 && sphere.y > canvas.height - sphere.radius - 2) {
+                sphere.vy = -5; // Give it a little boost
+            }
+        }
+        
+        function draw() {
+            // Clear canvas with fade effect for smoother trail
+            ctx.fillStyle = 'rgba(245, 245, 245, 0.3)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            drawTrail();
+            drawSphere();
+        }
+        
+        function animate() {
+            draw();
+            update();
+            requestAnimationFrame(animate);
+        }
+        
+        // Start animation
+        animate();
+    </script>
+</body>
+</html>
