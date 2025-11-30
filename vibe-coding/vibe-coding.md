@@ -24,3 +24,5 @@
 
 1. Clipboard manager e.g. CopyQ, Alfred for Mac, etc.
 
+2. Dictation tool for coding e.g. SuperWhisper for MacOS
+
