@@ -136,8 +136,8 @@
             width: 34,
             height: 24,
             velocity: 0,
-            gravity: 0.5,
-            jump: -9,
+            gravity: 0.35,
+            jump: -7,
             rotation: 0
         };
         
@@ -149,8 +149,8 @@
         let gameStarted = false;
         
         const pipeWidth = 60;
-        const pipeGap = 150;
-        const pipeSpeed = 2;
+        const pipeGap = 180;
+        const pipeSpeed = 1.5;
         
         // Bird colors for gradient
         function drawBird() {
@@ -336,7 +336,7 @@
             drawClouds();
             
             // Update and draw pipes
-            if (frame % 90 === 0) {
+            if (frame % 120 === 0) {
                 createPipe();
             }
             
