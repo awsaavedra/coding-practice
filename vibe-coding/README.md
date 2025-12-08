@@ -57,7 +57,6 @@ This folder contains various JavaScript projects created through AI-assisted pro
 
 **Technologies:** HTML5 Canvas, game loop with requestAnimationFrame, localStorage, event handling, CSS3 styling
 
----
 
 ## How to Use
 
@@ -74,3 +73,19 @@ These projects demonstrate:
 - Game development fundamentals
 - User interaction and control systems
 - Local storage for data persistence
+
+
+# Directives for Agents:
+
+1. Run all tests again and report any and all issues
+2. Improve your test cases
+3. Look for missing edge cases
+4. Iterate on version one.
+5. 
+
+# Useful Links
+
+https://www.anthropic.com/engineering/claude-code-best-practices
+
+
+
