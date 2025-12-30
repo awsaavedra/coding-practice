@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Simple Kotlin compile and run script
+# Usage: ./krun filename.kt  or  ./krun filename
+
+if [ -z "$1" ]; then
+    echo "Usage: ./krun <filename.kt>"
+    exit 1
+fi
+
+# Strip .kt extension if provided
+filename="${1%.kt}"
+
+# Check if the source file exists
+if [ ! -f "${filename}.kt" ]; then
+    echo "Error: ${filename}.kt not found"
+    exit 1
+fi
+
+# Compile
+echo "Compiling ${filename}.kt..."
+kotlinc "${filename}.kt" -include-runtime -d "${filename}.jar"
+
+if [ $? -ne 0 ]; then
+    echo "Compilation failed"
+    exit 1
+fi
+
+# Run
+echo "Running ${filename}.jar..."
+java -jar "${filename}.jar"
